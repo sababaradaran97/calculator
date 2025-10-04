@@ -1,209 +1,103 @@
 from tkinter import *
 from tkinter.messagebox import Message
 
+
+one_3 = [ 1 , 2 , 3 ]
+four_6 = [ 4 , 5 ,6 ]
+seven_9 = [ 7 , 8 , 9 ]
+action = [ "+" , "-" , "/" , "*" , "." , "=" ]
+
+window = Tk()
+window.title( "calculator" )
+window.geometry( "230x290" )
+
 string = ""
 
-win = Tk()
-win.title( "calculator" )
-win.geometry( "300x390" )
+
+show_area = Label( window , text = "" , height = 2 , width = 26 , bg = "lightgray" , fg = "black" )
+show_area.place( x = 20 , y = 20 )
 
 
-def entry ( master , text_name , text_width , text_height , text_x , text_y ) :
-    Label( master , name = text_name , width = text_width , height = text_height , bg = "gray" ).place( x = text_x , y = text_y )
+def show ( i ):
+    show_area.config( text = f"{ i }" + show_area.cget( "text" ) )
 
-name =""
-width = "36"
-height = "2"
-x = "25"
-y = "40"
+y_position = 70
+x_position = 20
 
-entry( win , name , width , height , x , y )
-
-
-def show_result_9 () :
-    global string
-    number = "9"
-    entry( win , number , width , height , x , y )
-    string = string + "9"
+for i in range( 9 , 0 , -1 ) :
+    col =  ( ( i - 1 ) % 3 )
+    row = 2 - ( ( i - 1 ) // 3 )
+    
+    button = Button( window, text=f"{i}", command=lambda i=i: show( i ) , width = 4 , height = 2 ).place( x = 40 * col + x_position , y = row * 50 + y_position )
 
 
-def show_result_8 () :
-    global string
-    number = "8"
-    entry( win , number , width , x , y )
-    string = string + number
 
-def show_result_7 () :
-    global string
-    number = "9"
-    entry( win , "7" , width , x , y )
-    string = string + "7"
+"""
+for i in range( 10 ):
 
-def show_result_6 () :
-    global string
-    number = "9"
-    entry( win , "6" , width , x , y )
-    string = string + "6"
+    if i in [ 9 , 8 , 7 ] :
 
-def show_result_5 () :
-    global string
-    number = "9"
-    entry( win , "5" , width , x , y )
-    string = string + "5"
+        if i == 9 :
+            button = Button( window, text=f"{i}", command = lambda i=i: show( i ) , width = 4 , height = 2 ).place( x = 20 , y = 70 )
 
-def show_result_4 () :
-    global string
-    number = "9"
-    entry( win , "4" , width , x , y )
-    string = string + "4"
+        if i == 8 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 70 , y = 70 )
 
-def show_result_3 () :
-    global string
-    number = "9"
-    entry( win , "3" , width , x , y )
-    string = string + "3"
+        if i == 7 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 120 , y = 70 )
 
-def show_result_2 () :
-    global string
-    number = "9"
-    entry( win , "2" , width , x , y )
-    string = string + "2"
+    elif i in [ 6 , 5 , 4 ] :
 
-def show_result_1 () :
-    global string
-    number = "9"
-    entry( win , "1" , width , x , y )
-    string = string + "1"
+        if i == 6 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 20 , y = 120 )
 
-def show_result_0 () :
-    global string
-    number = "9"
-    entry( win , "0" , width , x , y )
-    string = string + "0"
+        if i == 5 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 70 , y = 120 )
 
-def show_result_minez () :
-    global string
-    number = "9"
-    string = string + "-"
-
-def show_result_plus () :
-    global string
-    number = "9"
-    string = string + "+"
-
-def show_result_equal () :
-    global string
-    string = string + "="
-    entry( win , eval(string) , width , x , y )
-    string = ""
-
-def show_result_devide () :
-    global string
-    string = string + "/"
-
-def show_result_multiplation () :
-    global string
-    string = string + "*"
-
-def show_result_dote () :
-    if "." in string :
-        Message.showerror( "rertete" , "reredufgehdj" )
+        if i == 4 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 120 , y = 120 )
         
+
+    elif i in [ 3 , 2 , 1 ] :
+        if i == 3 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 20 , y = 170 )
+
+        if i == 2 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 70 , y = 170 )
+
+        if i == 1 :
+            button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 120 , y = 170 )
+
+
     else :
-        entry( win , "." , name , width , x , y )    
-        string = string + "."
+        button = Button( window, text=f"{i}", command=lambda i=i: hello( i ) , width = 4 , height = 2 ).place( x = 20 , y = 220 )
 
 
+   
+for i in range( len( action ) ):
+
+    if action[ i ] == "+":
+        button = Button( window, text=f"{action[ i ]}", command=lambda act=action[ i ]: hello( act ) , width = 4 , height = 2 ).place( x = 170 , y = 70 )
+
+    if action[ i ] == "-":
+        button = Button( window, text=f"{action[ i ]}", command=lambda act=action[ i ]: hello( act ) , width = 4 , height = 2 ).place( x = 170 , y = 120 )
+
+    if action[ i ] == "/":
+        button = Button( window, text=f"{action[ i ]}", command=lambda act=action[ i ]: hello( act ) , width = 4 , height = 2 ).place( x = 170 , y = 170 )
+
+    if action[ i ] == "*":
+        button = Button( window, text=f"{action[ i ]}", command=lambda act=action[ i ]: hello( act ) , width = 4 , height = 2 ).place( x = 170 , y = 220 )
+
+    if action[ i ] == ".":
+        button = Button( window, text=f"{action[ i ]}", command=lambda act=action[ i ]: hello( act ) , width = 4 , height = 2 ).place( x = 70 , y = 220 )
+
+    if action[ i ] == "=":
+        button = Button( window, text=f"{action[ i ]}", command=lambda act=action[ i ]: hello( act ) , width = 4 , height = 2 ).place( x = 120 , y = 220 )
+
+    
+
+"""
 
 
+mainloop = window.mainloop()
 
-#first line
-
-# buttom_9
-buttom_9 = Button( win , text = "9" , command = show_result_9 )
-buttom_9.place( x = "25" , y = "100" , width = "50" , height = "40" )
-buttom_9.bind( "<Button>" , show_result_9 )
-
-# buttom_8
-buttom_8 = StringVar
-buttom_8 = Button( win , text = "8" , command = show_result_8 )
-buttom_8.place( x = "95" , y = "100" , width = "50" , height = "40" )
-
-# buttom_7
-buttom_7 = StringVar
-buttom_7 = Button( win , text = "7" , command = show_result_7 )
-buttom_7.place( x = "165" , y = "100" , width = "50" , height = "40" )
-
-# buttom_devide
-buttom_devide = StringVar
-buttom_devide = Button( win , text = "/" , command = show_result_devide )
-buttom_devide.place( x = "235" , y = "100" , width = "50" , height = "40" )
-
-# second line
-
-# buttom_6
-buttom_6 = StringVar
-buttom_6 = Button( win , text = "6" , command = show_result_6 )
-buttom_6.place( x = "25" , y = "160" , width = "50" , height = "40" )
-
-# buttom_5
-buttom_5 = StringVar
-buttom_5 = Button( win , text = "5" , command = show_result_5 )
-buttom_5.place( x = "95" , y = "160" , width = "50" , height = "40" )
-
-# buttom_4
-buttom_4 = StringVar
-buttom_4 = Button( win , text = "4" , command = show_result_4 )
-buttom_4.place( x = "165" , y = "160" , width = "50" , height = "40" )
-
-
-# buttom_multipleation
-buttom_multipleation = StringVar
-buttom_multipleation = Button( win , text = "*" , command = show_result_multiplation )
-buttom_multipleation.place( x = "235" , y = "160" , width = "50" , height = "40" )
-
-# third line
-
-# buttom_3
-buttom_3 = StringVar
-buttom_3 = Button( win , text = "3" , command = show_result_3 )
-buttom_3.place( x = "25" , y = "220" , width = "50" , height = "40" )
-
-# buttom_2
-buttom_2 = StringVar
-buttom_2 = Button( win , text = "2" , command = show_result_2 )
-buttom_2.place( x = "95" , y = "220" , width = "50" , height = "40" )
-
-# buttom_1
-buttom_1 = StringVar
-buttom_1 = Button( win , text = "1" , command = show_result_1 )
-buttom_1.place( x = "165" , y = "220" , width = "50" , height = "40" )
-
-# buttom_minez
-buttom_minez = StringVar
-buttom_minez = Button( win , text = "-" , command = show_result_minez )
-buttom_minez.place( x = "235" , y = "220" , width = "50" , height = "40" )
-
-# fourth line
-
-buttom_0 = StringVar
-buttom_0 = Button( win , text = "0" , command = show_result_0 )
-buttom_0.place( x = "25" , y = "280" , width = "50" , height = "40" )
-
-# buttom_equal
-buttom_equal = StringVar
-buttom_equal = Button( win , text = "=" , command = show_result_equal )
-buttom_equal.place( x = "165" , y = "280" , width = "50" , height = "40" )
-
-# buttom_plus
-buttom_plus = StringVar
-buttom_plus = Button( win , text = "+" , command = show_result_plus )
-buttom_plus.place( x = "235" , y = "280" , width = "50" , height = "40" )
-
-# dote
-buttom_dote = StringVar
-buttom_dote = Button( win , text = "." , command = show_result_dote )
-buttom_dote.place( x = "95" , y = "280" , width = "50" , height = "40" )
-
-
-win.mainloop()
